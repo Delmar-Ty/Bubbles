@@ -32,8 +32,8 @@ function init() {
         let r = randRan(10, 40);
         let x = randRan(r, canvas.width - r);
         let y = randRan(r, canvas.height - r);
-        let xv = randRan(-3, 3);
-        let yv = randRan(-3, 3);
+        let xv = randRan(-0.5, 0.5);
+        let yv = randRan(-0.5, 0.5);
         bubbles[i] = new Bubble(x, y, xv, yv, r, randRan(1, 10), i);
     }
     console.log(bubbles);
@@ -43,8 +43,8 @@ function spawn(id) {
     let r = randRan(10, 40);
     let x = randRan(r, canvas.width - r);
     let y = randRan(r, canvas.height - r);
-    let xv = randRan(-3, 3);
-    let yv = randRan(-3, 3);
+    let xv = randRan(-0.5, 0.5);
+    let yv = randRan(-0.5, 0.5);
     bubbles[id] = new Bubble(x, y, xv, yv, r, randRan(1, 10), id);
 }
 
@@ -68,7 +68,10 @@ function Bubble(x, y, xv, yv, r, dura, index) {
         ctx.save();
         ctx.globalAlpha = this.opacity;
         ctx.fillStyle = this.color;
+        ctx.strokeStyle = 'white'
+        ctx.lineWidth = 3;
         ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2, false);
+        ctx.stroke();
         ctx.fill();
         ctx.restore();
         ctx.closePath();
